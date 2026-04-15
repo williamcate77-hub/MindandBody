@@ -1,0 +1,69 @@
+import { useNavigate } from 'react-router-dom';
+import { type Exercise } from '../../types/mobility';
+import { formatDuration } from '../../data/exercises';
+
+type StepState = 'active' | 'next' | 'future';
+
+interface StepItemProps {
+  exercise: Exercise;
+  index: number;
+  state: StepState;
+}
+
+export function StepItem({ exercise, index, state }: StepItemProps) {
+  const navigate = useNavigate();
+
+  const isActive = state === 'active';
+  const isNext = state === 'next';
+
+  return (
+    <button
+      onClick={() => navigate(`/mobility/${exercise.id}`)}
+      className="w-full text-left flex items-center gap-3 px-4 py-3 rounded-xl transition-all"
+      style={{
+        background: isActive
+          ? 'rgba(30, 42, 32, 0.9)'
+          : isNext
+            ? 'rgba(18, 26, 21, 0.6)'
+            : 'transparent',
+        borderLeft: isActive ? '2px solid #8ecf9e' : '2px solid transparent',
+        opacity: state === 'future' ? 0.45 : 1,
+      }}
+    >
+      {/* Status indicator / number */}
+      <div className="flex-shrink-0 w-7 flex items-center justify-center">
+        {isActive ? (
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-60" />
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand" />
+          </span>
+        ) : (
+          <span className={`text-xs font-semibold ${isNext ? 'text-ink-2' : 'text-ink-3'}`}>
+            {index + 1}
+          </span>
+        )}
+      </div>
+
+      {/* Name + duration */}
+      <div className="flex-1 min-w-0">
+        <p
+          className={`text-sm font-medium leading-tight truncate ${
+            isActive ? 'text-ink' : isNext ? 'text-ink-2' : 'text-ink-3'
+          }`}
+        >
+          {exercise.name}
+        </p>
+        <p className={`text-[11px] mt-0.5 ${isActive ? 'text-ink-2' : 'text-ink-3'}`}>
+          {formatDuration(exercise.duration)}
+        </p>
+      </div>
+
+      {/* Chevron */}
+      {(isActive || isNext) && (
+        <span className="material-symbols-outlined text-ink-3 text-base flex-shrink-0">
+          chevron_right
+        </span>
+      )}
+    </button>
+  );
+}

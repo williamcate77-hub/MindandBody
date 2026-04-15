@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  /* Backgrounds */
+  --color-deep: #0e1511;
+  --color-base: #1a1c1a;
+  --color-surf: #121a15;
+  --color-surf-2: #1e2a20;
+  --color-surf-3: #243029;
+
+  /* Brand / Primary */
+  --color-brand: #8ecf9e;
+  --color-brand-dim: #4a7c59;
+  --color-brand-deep: #2d5c3f;
+
+  /* Text */
+  --color-ink: #e8f0ea;
+  --color-ink-2: #9ab5a0;
+  --color-ink-3: #5e7a64;
+
+  /* Fonts */
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-serif: Literata, Georgia, serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: #0e1511;
+  color: #e8f0ea;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Material Symbols default style */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+  user-select: none;
+}
+
+/* Audio range input — brand color accent */
+input[type="range"] {
+  accent-color: #8ecf9e;
+}
+
+/* Smooth scroll on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
