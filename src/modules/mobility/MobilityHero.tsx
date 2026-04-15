@@ -28,10 +28,13 @@ export function MobilityHero() {
         </div>
         <div
           className="rounded-xl px-3 py-2 text-center"
-          style={{ background: 'rgba(74, 124, 89, 0.2)', border: '1px solid rgba(142, 207, 158, 0.15)' }}
+          style={{
+            background: 'rgba(45, 122, 79, 0.1)',
+            border: '1px solid rgba(45, 122, 79, 0.2)',
+          }}
         >
           <p className="text-brand text-xs font-semibold">{currentPhase.name}</p>
-          <p className="text-ink-3 text-[10px] mt-0.5">{currentPhase.tension} tension</p>
+          <p className="text-ink-3 text-[10px] mt-0.5">{currentPhase.tension}</p>
         </div>
       </div>
     </div>

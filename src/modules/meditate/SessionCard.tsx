@@ -16,7 +16,7 @@ export function SessionCard({ session }: SessionCardProps) {
     <div
       onClick={() => navigate(`/meditate/${session.id}`)}
       className="relative flex-shrink-0 w-44 bg-surf rounded-xl p-4 cursor-pointer select-none"
-      style={{ border: '1px solid rgba(142, 207, 158, 0.07)' }}
+      style={{ border: '1px solid rgba(45, 122, 79, 0.15)', boxShadow: '0 1px 4px rgba(21, 34, 25, 0.06)' }}
     >
       {/* Favourite */}
       <button
@@ -33,7 +33,7 @@ export function SessionCard({ session }: SessionCardProps) {
             fontVariationSettings: fav
               ? "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20"
               : "'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 20",
-            color: fav ? '#8ecf9e' : undefined,
+            color: fav ? '#2d7a4f' : undefined,
           }}
         >
           favorite

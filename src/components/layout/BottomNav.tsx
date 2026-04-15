@@ -13,10 +13,10 @@ export function BottomNav() {
     <nav
       className="fixed bottom-0 left-0 right-0 z-50"
       style={{
-        background: 'rgba(18, 26, 21, 0.85)',
+        background: 'rgba(242, 247, 244, 0.92)',
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
-        borderTop: '1px solid rgba(142, 207, 158, 0.08)',
+        borderTop: '1px solid rgba(45, 122, 79, 0.15)',
       }}
     >
       <div className="flex items-center justify-around px-8 py-3 pb-safe-bottom">

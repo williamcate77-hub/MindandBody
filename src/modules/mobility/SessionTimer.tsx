@@ -46,7 +46,7 @@ export function SessionTimer() {
             cy={90}
             r={RADIUS}
             fill="none"
-            stroke="#1e2a20"
+            stroke="#d4e8db"
             strokeWidth={7}
           />
           {/* Progress arc */}
@@ -55,7 +55,7 @@ export function SessionTimer() {
             cy={90}
             r={RADIUS}
             fill="none"
-            stroke={isComplete ? '#4a7c59' : '#8ecf9e'}
+            stroke={isComplete ? '#5aa374' : '#2d7a4f'}
             strokeWidth={7}
             strokeLinecap="round"
             strokeDasharray={CIRCUMFERENCE}
@@ -64,7 +64,7 @@ export function SessionTimer() {
           />
         </svg>
 
-        {/* Center text — not rotated */}
+        {/* Center text */}
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           {isComplete ? (
             <>
@@ -98,7 +98,7 @@ export function SessionTimer() {
 
       {/* Overall progress bar */}
       <div className="w-full max-w-xs mb-4">
-        <div className="h-1 bg-surf-2 rounded-full overflow-hidden">
+        <div className="h-1 bg-surf-3 rounded-full overflow-hidden">
           <div
             className="h-full bg-brand rounded-full"
             style={{
@@ -126,11 +126,11 @@ export function SessionTimer() {
         <button
           onClick={isRunning ? pause : start}
           disabled={isComplete}
-          className="w-[60px] h-[60px] rounded-full bg-brand flex items-center justify-center hover:bg-brand/90 transition-colors disabled:opacity-40"
+          className="w-[60px] h-[60px] rounded-full bg-brand flex items-center justify-center hover:bg-brand-deep transition-colors disabled:opacity-40"
           aria-label={isRunning ? 'Pause' : 'Play'}
         >
           <span
-            className="material-symbols-outlined text-deep text-[30px]"
+            className="material-symbols-outlined text-white text-[30px]"
             style={{ fontVariationSettings: "'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24" }}
           >
             {isRunning ? 'pause' : 'play_arrow'}

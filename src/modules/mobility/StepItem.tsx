@@ -23,11 +23,11 @@ export function StepItem({ exercise, index, state }: StepItemProps) {
       className="w-full text-left flex items-center gap-3 px-4 py-3 rounded-xl transition-all"
       style={{
         background: isActive
-          ? 'rgba(30, 42, 32, 0.9)'
+          ? 'rgba(45, 122, 79, 0.08)'
           : isNext
-            ? 'rgba(18, 26, 21, 0.6)'
+            ? 'rgba(234, 242, 237, 0.8)'
             : 'transparent',
-        borderLeft: isActive ? '2px solid #8ecf9e' : '2px solid transparent',
+        borderLeft: isActive ? '2px solid #2d7a4f' : '2px solid transparent',
         opacity: state === 'future' ? 0.45 : 1,
       }}
     >

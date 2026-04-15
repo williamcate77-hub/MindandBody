@@ -13,7 +13,7 @@ export function FocusSidebar() {
       {currentExercise && (
         <div
           className="rounded-xl p-4"
-          style={{ background: 'rgba(30, 42, 32, 0.5)', border: '1px solid rgba(142, 207, 158, 0.08)' }}
+          style={{ background: '#ffffff', border: '1px solid rgba(45, 122, 79, 0.15)', boxShadow: '0 1px 4px rgba(21, 34, 25, 0.06)' }}
         >
           <p className="text-ink-3 text-[10px] font-semibold uppercase tracking-widest mb-2">
             Coaching Cues
@@ -33,7 +33,7 @@ export function FocusSidebar() {
       {/* Phase card */}
       <div
         className="rounded-xl p-4"
-        style={{ background: 'rgba(18, 26, 21, 0.8)', border: '1px solid rgba(142, 207, 158, 0.08)' }}
+        style={{ background: '#ffffff', border: '1px solid rgba(45, 122, 79, 0.15)', boxShadow: '0 1px 4px rgba(21, 34, 25, 0.06)' }}
       >
         <p className="text-ink-3 text-[10px] font-semibold uppercase tracking-widest mb-2">
           12-Week Phase
@@ -62,7 +62,7 @@ export function FocusSidebar() {
       {/* Week selector */}
       <div
         className="rounded-xl p-4"
-        style={{ border: '1px solid rgba(142, 207, 158, 0.08)' }}
+        style={{ border: '1px solid rgba(45, 122, 79, 0.15)' }}
       >
         <p className="text-ink-3 text-[10px] font-semibold uppercase tracking-widest mb-3">
           Current Week

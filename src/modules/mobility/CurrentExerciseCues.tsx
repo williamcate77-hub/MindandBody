@@ -8,8 +8,9 @@ export function CurrentExerciseCues() {
       <div
         className="mx-5 mb-5 rounded-2xl p-5 text-center"
         style={{
-          background: 'rgba(30, 42, 32, 0.5)',
-          border: '1px solid rgba(142, 207, 158, 0.1)',
+          background: '#ffffff',
+          border: '1px solid rgba(45, 122, 79, 0.15)',
+          boxShadow: '0 1px 4px rgba(21, 34, 25, 0.06)',
         }}
       >
         <span
@@ -31,8 +32,9 @@ export function CurrentExerciseCues() {
     <div
       className="mx-5 mb-5 rounded-2xl p-5"
       style={{
-        background: 'rgba(30, 42, 32, 0.5)',
-        border: '1px solid rgba(142, 207, 158, 0.1)',
+        background: '#ffffff',
+        border: '1px solid rgba(45, 122, 79, 0.15)',
+        boxShadow: '0 1px 4px rgba(21, 34, 25, 0.06)',
       }}
     >
       {/* Exercise name + number */}

@@ -13,7 +13,7 @@ export default function App() {
     <BrowserRouter>
       <AppProvider>
         <MobilityProvider>
-          <div className="min-h-screen flex flex-col font-sans" style={{ background: '#0e1511', color: '#e8f0ea' }}>
+          <div className="min-h-screen flex flex-col font-sans" style={{ background: '#f2f7f4', color: '#152219' }}>
             <Header />
             <main className="flex-1 pb-24">
               <Routes>

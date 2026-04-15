@@ -2,21 +2,21 @@
 
 @theme {
   /* Backgrounds */
-  --color-deep: #0e1511;
-  --color-base: #1a1c1a;
-  --color-surf: #121a15;
-  --color-surf-2: #1e2a20;
-  --color-surf-3: #243029;
+  --color-deep: #f2f7f4;
+  --color-base: #e8f0eb;
+  --color-surf: #ffffff;
+  --color-surf-2: #eaf2ed;
+  --color-surf-3: #d4e8db;
 
   /* Brand / Primary */
-  --color-brand: #8ecf9e;
-  --color-brand-dim: #4a7c59;
-  --color-brand-deep: #2d5c3f;
+  --color-brand: #2d7a4f;
+  --color-brand-dim: #5aa374;
+  --color-brand-deep: #1a5035;
 
   /* Text */
-  --color-ink: #e8f0ea;
-  --color-ink-2: #9ab5a0;
-  --color-ink-3: #5e7a64;
+  --color-ink: #152219;
+  --color-ink-2: #3a5c46;
+  --color-ink-3: #7a9e88;
 
   /* Fonts */
   --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
@@ -31,8 +31,8 @@
 
 html,
 body {
-  background-color: #0e1511;
-  color: #e8f0ea;
+  background-color: #f2f7f4;
+  color: #152219;
   font-family: "Plus Jakarta Sans", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -54,7 +54,7 @@ body {
 
 /* Audio range input — brand color accent */
 input[type="range"] {
-  accent-color: #8ecf9e;
+  accent-color: #2d7a4f;
 }
 
 /* Smooth scroll on mobile */

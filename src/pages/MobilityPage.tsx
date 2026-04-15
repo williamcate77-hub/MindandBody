@@ -12,14 +12,15 @@ export function MobilityPage() {
       <div
         className="mx-5 mb-5 rounded-2xl"
         style={{
-          background: 'rgba(18, 26, 21, 0.7)',
-          border: '1px solid rgba(142, 207, 158, 0.08)',
+          background: '#ffffff',
+          border: '1px solid rgba(45, 122, 79, 0.15)',
+          boxShadow: '0 1px 4px rgba(21, 34, 25, 0.06)',
         }}
       >
         <SessionTimer />
       </div>
 
-      {/* Current exercise instructions — always visible during workout */}
+      {/* Current exercise instructions */}
       <CurrentExerciseCues />
 
       {/* Full step list */}

@@ -10,7 +10,11 @@ function AudioPlayer({ session }: { session: MeditationSession }) {
   return (
     <div
       className="rounded-2xl overflow-hidden"
-      style={{ background: 'rgba(30, 42, 32, 0.6)', border: '1px solid rgba(142, 207, 158, 0.1)' }}
+      style={{
+        background: '#ffffff',
+        border: '1px solid rgba(45, 122, 79, 0.15)',
+        boxShadow: '0 1px 4px rgba(21, 34, 25, 0.06)',
+      }}
     >
       {/* Label row */}
       <div className="flex items-center gap-2 px-5 pt-4 pb-3">
@@ -38,8 +42,8 @@ function AudioPlayer({ session }: { session: MeditationSession }) {
       />
 
       <p className="text-ink-3 text-[11px] text-center px-5 py-3 leading-relaxed">
-        Make sure the Google Drive files are shared as{' '}
-        <span className="text-ink-2">Anyone with the link</span> for audio to play.
+        Files must be shared as{' '}
+        <span className="text-ink-2 font-medium">Anyone with the link</span> in Google Drive.
       </p>
     </div>
   );
@@ -87,7 +91,7 @@ export function MeditationDetailPage() {
               fontVariationSettings: fav
                 ? "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24"
                 : "'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24",
-              color: fav ? '#8ecf9e' : undefined,
+              color: fav ? '#2d7a4f' : undefined,
             }}
           >
             favorite

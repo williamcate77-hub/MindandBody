@@ -7,7 +7,7 @@ interface BadgeProps {
 export function Badge({ label, variant = 'surf', size = 'sm' }: BadgeProps) {
   const variantClass =
     variant === 'brand'
-      ? 'bg-brand/15 text-brand'
+      ? 'bg-brand/10 text-brand'
       : variant === 'muted'
         ? 'bg-surf-2 text-ink-3'
         : 'bg-surf-2 text-ink-2';
