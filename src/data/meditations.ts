@@ -93,6 +93,6 @@ export const DURATION_GROUPS: { label: string; minutes: number[] }[] = [
   { label: '20+ min', minutes: [20, 30] },
 ];
 
-export function getAudioUrl(fileId: string): string {
-  return `https://docs.google.com/uc?export=open&id=${fileId}`;
+export function getEmbedUrl(fileId: string): string {
+  return `https://drive.google.com/file/d/${fileId}/preview`;
 }

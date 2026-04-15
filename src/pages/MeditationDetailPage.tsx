@@ -1,149 +1,46 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import { useRef, useState } from 'react';
-import { SESSIONS, getAudioUrl } from '../data/meditations';
+import { SESSIONS, getEmbedUrl } from '../data/meditations';
 import { useApp } from '../context/AppContext';
 import { Badge } from '../components/shared/Badge';
 import { type MeditationSession } from '../types/meditation';
 
 function AudioPlayer({ session }: { session: MeditationSession }) {
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
-
-  const audioUrl = getAudioUrl(session.audioFileId);
-
-  const formatTime = (s: number) => {
-    if (!isFinite(s) || isNaN(s)) return '0:00';
-    const m = Math.floor(s / 60);
-    const sec = Math.floor(s % 60);
-    return `${m}:${sec.toString().padStart(2, '0')}`;
-  };
-
-  const togglePlay = async () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    if (isPlaying) {
-      audio.pause();
-      setIsPlaying(false);
-    } else {
-      setIsLoading(true);
-      setError(false);
-      try {
-        await audio.play();
-        setIsPlaying(true);
-      } catch {
-        setError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-  };
-
-  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    const t = Number(e.target.value);
-    audio.currentTime = t;
-    setCurrentTime(t);
-  };
-
-  const progress = duration > 0 ? currentTime / duration : 0;
+  const embedUrl = getEmbedUrl(session.audioFileId);
 
   return (
     <div
-      className="rounded-2xl p-5 space-y-4"
+      className="rounded-2xl overflow-hidden"
       style={{ background: 'rgba(30, 42, 32, 0.6)', border: '1px solid rgba(142, 207, 158, 0.1)' }}
     >
-      <audio
-        ref={audioRef}
-        src={audioUrl}
-        onTimeUpdate={() => setCurrentTime(audioRef.current?.currentTime ?? 0)}
-        onLoadedMetadata={() => setDuration(audioRef.current?.duration ?? 0)}
-        onEnded={() => setIsPlaying(false)}
-        onError={() => { setError(true); setIsLoading(false); setIsPlaying(false); }}
-        preload="metadata"
+      {/* Label row */}
+      <div className="flex items-center gap-2 px-5 pt-4 pb-3">
+        <span
+          className="material-symbols-outlined text-brand text-xl"
+          style={{ fontVariationSettings: "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24" }}
+        >
+          self_improvement
+        </span>
+        <span className="text-ink-2 text-sm font-medium">{session.title}</span>
+        <span className="ml-auto text-ink-3 text-xs">{session.durationMinutes} min</span>
+      </div>
+
+      {/* Google Drive audio player iframe */}
+      <iframe
+        src={embedUrl}
+        allow="autoplay"
+        title={session.title}
+        style={{
+          width: '100%',
+          height: '80px',
+          border: 'none',
+          display: 'block',
+        }}
       />
 
-      {/* Progress bar */}
-      <div className="space-y-1.5">
-        <div className="relative h-1 bg-surf-3 rounded-full overflow-hidden">
-          <div
-            className="absolute inset-y-0 left-0 bg-brand rounded-full transition-all"
-            style={{ width: `${progress * 100}%` }}
-          />
-        </div>
-        <input
-          type="range"
-          min={0}
-          max={duration || 1}
-          step={0.1}
-          value={currentTime}
-          onChange={handleSeek}
-          className="w-full opacity-0 absolute"
-          style={{ height: '4px', marginTop: '-18px', cursor: 'pointer' }}
-        />
-        <div className="flex justify-between text-xs text-ink-3">
-          <span>{formatTime(currentTime)}</span>
-          <span>{formatTime(duration || session.durationMinutes * 60)}</span>
-        </div>
-      </div>
-
-      {/* Controls */}
-      <div className="flex items-center justify-center gap-6">
-        <button
-          onClick={() => {
-            if (audioRef.current) {
-              audioRef.current.currentTime = Math.max(0, currentTime - 15);
-            }
-          }}
-          className="text-ink-3 hover:text-ink transition-colors"
-          aria-label="Rewind 15 seconds"
-        >
-          <span className="material-symbols-outlined text-2xl">replay_15</span>
-        </button>
-
-        <button
-          onClick={togglePlay}
-          className="w-16 h-16 rounded-full bg-brand flex items-center justify-center hover:bg-brand/90 transition-colors"
-          aria-label={isPlaying ? 'Pause' : 'Play'}
-          disabled={isLoading}
-        >
-          {isLoading ? (
-            <span className="material-symbols-outlined text-deep text-2xl animate-spin">refresh</span>
-          ) : (
-            <span
-              className="material-symbols-outlined text-deep text-3xl"
-              style={{ fontVariationSettings: "'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24" }}
-            >
-              {isPlaying ? 'pause' : 'play_arrow'}
-            </span>
-          )}
-        </button>
-
-        <button
-          onClick={() => {
-            if (audioRef.current) {
-              audioRef.current.currentTime = Math.min(
-                audioRef.current.duration || 9999,
-                currentTime + 30,
-              );
-            }
-          }}
-          className="text-ink-3 hover:text-ink transition-colors"
-          aria-label="Forward 30 seconds"
-        >
-          <span className="material-symbols-outlined text-2xl">forward_30</span>
-        </button>
-      </div>
-
-      {error && (
-        <p className="text-xs text-center text-ink-3">
-          Unable to load audio. Ensure the file is publicly shared on Google Drive.
-        </p>
-      )}
+      <p className="text-ink-3 text-[11px] text-center px-5 py-3 leading-relaxed">
+        Make sure the Google Drive files are shared as{' '}
+        <span className="text-ink-2">Anyone with the link</span> for audio to play.
+      </p>
     </div>
   );
 }

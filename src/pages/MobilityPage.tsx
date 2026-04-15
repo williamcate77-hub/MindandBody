@@ -1,7 +1,7 @@
 import { MobilityHero } from '../modules/mobility/MobilityHero';
 import { SessionTimer } from '../modules/mobility/SessionTimer';
+import { CurrentExerciseCues } from '../modules/mobility/CurrentExerciseCues';
 import { RoutineStepList } from '../modules/mobility/RoutineStepList';
-import { FocusSidebar } from '../modules/mobility/FocusSidebar';
 
 export function MobilityPage() {
   return (
@@ -19,15 +19,11 @@ export function MobilityPage() {
         <SessionTimer />
       </div>
 
-      {/* Two-column on lg, single on mobile */}
-      <div className="lg:grid lg:grid-cols-[1fr_320px] lg:gap-4 lg:px-5">
-        <div>
-          <RoutineStepList />
-        </div>
-        <div className="mt-5 lg:mt-0">
-          <FocusSidebar />
-        </div>
-      </div>
+      {/* Current exercise instructions — always visible during workout */}
+      <CurrentExerciseCues />
+
+      {/* Full step list */}
+      <RoutineStepList />
     </div>
   );
 }
