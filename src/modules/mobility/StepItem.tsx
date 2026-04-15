@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { type Exercise } from '../../types/mobility';
 import { formatDuration } from '../../data/exercises';
 
-type StepState = 'active' | 'next' | 'future';
+export type StepState = 'active' | 'next' | 'done' | 'future';
 
 interface StepItemProps {
   exercise: Exercise;
@@ -15,6 +15,7 @@ export function StepItem({ exercise, index, state }: StepItemProps) {
 
   const isActive = state === 'active';
   const isNext = state === 'next';
+  const isDone = state === 'done';
 
   return (
     <button
@@ -30,12 +31,19 @@ export function StepItem({ exercise, index, state }: StepItemProps) {
         opacity: state === 'future' ? 0.45 : 1,
       }}
     >
-      {/* Status indicator / number */}
+      {/* Status indicator */}
       <div className="flex-shrink-0 w-7 flex items-center justify-center">
         {isActive ? (
           <span className="relative flex h-2.5 w-2.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-60" />
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand" />
+          </span>
+        ) : isDone ? (
+          <span
+            className="material-symbols-outlined text-brand text-[18px]"
+            style={{ fontVariationSettings: "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20" }}
+          >
+            task_alt
           </span>
         ) : (
           <span className={`text-xs font-semibold ${isNext ? 'text-ink-2' : 'text-ink-3'}`}>
@@ -48,7 +56,7 @@ export function StepItem({ exercise, index, state }: StepItemProps) {
       <div className="flex-1 min-w-0">
         <p
           className={`text-sm font-medium leading-tight truncate ${
-            isActive ? 'text-ink' : isNext ? 'text-ink-2' : 'text-ink-3'
+            isActive ? 'text-ink' : isDone ? 'text-ink-2' : isNext ? 'text-ink-2' : 'text-ink-3'
           }`}
         >
           {exercise.name}

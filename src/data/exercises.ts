@@ -110,7 +110,7 @@ export const ALL_EXERCISES: Exercise[] = [
   },
   {
     id: 9,
-    name: 'Ankle Dorsiflexion',
+    name: 'Half-Kneeling Ankle Dorsiflexion',
     duration: 120,
     description:
       'Half-kneeling ankle dorsiflexion mobilisation. Drive the knee forward over the toes while keeping the heel completely flat. 60 seconds per side.',
@@ -124,7 +124,7 @@ export const ALL_EXERCISES: Exercise[] = [
   },
   {
     id: 10,
-    name: 'Open Book Rotation',
+    name: 'Open Book Thoracic Rotation',
     duration: 120,
     description:
       'Lie on your side with knees stacked at 90° (hip lock). Reach the top arm overhead and behind, opening your chest to the ceiling. Hold 60 seconds per side.',

@@ -1,5 +1,5 @@
 import { useMobility } from '../../context/MobilityContext';
-import { StepItem } from './StepItem';
+import { StepItem, type StepState } from './StepItem';
 
 export function RoutineStepList() {
   const { exercises, currentIndex, isComplete } = useMobility();
@@ -14,14 +14,16 @@ export function RoutineStepList() {
 
       <div className="space-y-0.5 px-1">
         {exercises.map((exercise, index) => {
-          const state =
-            isComplete
-              ? 'future'
-              : index === currentIndex
-                ? 'active'
-                : index === currentIndex + 1
-                  ? 'next'
-                  : 'future';
+          let state: StepState;
+          if (isComplete || index < currentIndex) {
+            state = 'done';
+          } else if (index === currentIndex) {
+            state = 'active';
+          } else if (index === currentIndex + 1) {
+            state = 'next';
+          } else {
+            state = 'future';
+          }
 
           return (
             <StepItem
