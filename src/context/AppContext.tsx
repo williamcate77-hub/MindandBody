@@ -3,16 +3,10 @@ import {
   useContext,
   useState,
   useCallback,
-  useMemo,
   type ReactNode,
 } from 'react';
-import { type Phase } from '../types/mobility';
-import { getCurrentPhase } from '../data/exercises';
 
 interface AppContextValue {
-  currentWeek: number;
-  setCurrentWeek: (week: number) => void;
-  currentPhase: Phase;
   favouriteIds: string[];
   toggleFavourite: (id: string) => void;
   isFavourite: (id: string) => boolean;
@@ -20,16 +14,9 @@ interface AppContextValue {
 
 const AppContext = createContext<AppContextValue | null>(null);
 
-const WEEK_KEY = 'mb_current_week';
 const FAVS_KEY = 'mb_favourite_ids';
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [currentWeek, setCurrentWeekState] = useState<number>(() => {
-    const stored = localStorage.getItem(WEEK_KEY);
-    const parsed = stored ? parseInt(stored, 10) : 1;
-    return isNaN(parsed) || parsed < 1 || parsed > 12 ? 1 : parsed;
-  });
-
   const [favouriteIds, setFavouriteIds] = useState<string[]>(() => {
     const stored = localStorage.getItem(FAVS_KEY);
     try {
@@ -38,12 +25,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
       return [];
     }
   });
-
-  const setCurrentWeek = useCallback((week: number) => {
-    const clamped = Math.max(1, Math.min(12, week));
-    setCurrentWeekState(clamped);
-    localStorage.setItem(WEEK_KEY, String(clamped));
-  }, []);
 
   const toggleFavourite = useCallback((id: string) => {
     setFavouriteIds((prev) => {
@@ -58,12 +39,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
     [favouriteIds],
   );
 
-  const currentPhase = useMemo(() => getCurrentPhase(currentWeek), [currentWeek]);
-
   return (
-    <AppContext.Provider
-      value={{ currentWeek, setCurrentWeek, currentPhase, favouriteIds, toggleFavourite, isFavourite }}
-    >
+    <AppContext.Provider value={{ favouriteIds, toggleFavourite, isFavourite }}>
       {children}
     </AppContext.Provider>
   );

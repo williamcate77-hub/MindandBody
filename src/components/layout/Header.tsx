@@ -1,26 +1,17 @@
-import { useLocation } from 'react-router-dom';
-import { useApp } from '../../context/AppContext';
-
 export function Header() {
-  const location = useLocation();
-  const { currentWeek, currentPhase } = useApp();
-  const isMobility = location.pathname.startsWith('/mobility');
-
   return (
-    <header className="flex items-center justify-between px-5 pt-6 pb-2">
+    <header className="flex items-center gap-3 px-5 pt-6 pb-2">
+      <span
+        className="material-symbols-outlined text-brand text-[30px]"
+        style={{ fontVariationSettings: "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24" }}
+        aria-hidden="true"
+      >
+        self_improvement
+      </span>
       <div>
-        <h1 className="font-serif text-xl leading-tight text-ink">M&B</h1>
-        <p className="text-[11px] text-ink-3 font-sans tracking-wide uppercase">
-          Mind &amp; Body
-        </p>
+        <h1 className="font-serif text-xl leading-tight text-ink">Peaceful Mind</h1>
+        <p className="text-[11px] text-ink-3 font-sans tracking-wide uppercase">Meditation</p>
       </div>
-
-      {isMobility && (
-        <div className="flex items-center gap-2 bg-surf-2 px-3 py-1.5 rounded-full">
-          <span className="text-brand text-xs font-semibold">{currentPhase.name}</span>
-          <span className="text-ink-3 text-[11px]">Wk {currentWeek}</span>
-        </div>
-      )}
     </header>
   );
 }

@@ -1,7 +1,7 @@
 {
-  "name": "Mind & Body",
-  "short_name": "M&B",
-  "description": "Your daily meditation and mobility companion",
+  "name": "Peaceful Mind",
+  "short_name": "Peaceful Mind",
+  "description": "Your daily meditation companion",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",

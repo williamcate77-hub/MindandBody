@@ -1,5 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <rect width="512" height="512" rx="112" fill="#2d7a4f"/>
-  <text x="256" y="200" font-family="Georgia, serif" font-size="130" font-weight="600" fill="#f2f7f4" text-anchor="middle" dominant-baseline="middle">M</text>
-  <text x="256" y="340" font-family="Georgia, serif" font-size="130" font-weight="600" fill="#a8d8b8" text-anchor="middle" dominant-baseline="middle">&amp;B</text>
+  <!-- crossed legs -->
+  <path d="M96 384c0-26 72-48 160-48s160 22 160 48-72 48-160 48-160-22-160-48z" fill="#a8d8b8"/>
+  <!-- torso and arms -->
+  <path d="M256 196c-46 0-82 33-91 79l-9 43c-38 9-62 24-62 40 0 8 8 15 22 21 34-24 96-39 140-39s106 15 140 39c14-6 22-13 22-21 0-16-24-31-62-40l-9-43c-9-46-45-79-91-79z" fill="#f2f7f4"/>
+  <!-- head -->
+  <circle cx="256" cy="138" r="50" fill="#f2f7f4"/>
 </svg>
